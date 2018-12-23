@@ -4,7 +4,6 @@ use types::*;
 
 use std::hash::{Hash, Hasher};
 
-
 #[derive(Debug, Clone)]
 /// An atom
 pub struct Atom {
@@ -27,7 +26,6 @@ pub struct Atom {
     pub diatomic: bool,
 }
 
-
 impl Atom {
     /// Convert a string representation to an `Atom`
     pub fn from_string(symbol: &str) -> Option<Atom> {
@@ -40,7 +38,6 @@ impl Atom {
 
         None
     }
-
 
     /// Get the charge an atom has based on its group
     pub fn charge_by_group(&self) -> Option<AtomCharge> {
@@ -65,9 +62,7 @@ impl Atom {
     }
 }
 
-
 impl Eq for Atom {}
-
 
 impl PartialEq for Atom {
     /// Two `Atom`s are equal when their atom numbers are equal
@@ -76,7 +71,6 @@ impl PartialEq for Atom {
     }
 }
 
-
 impl Hash for Atom {
     fn hash<H: Hasher>(&self, state: &mut H) {
         // Only the `AtomNumber` determines the hash
@@ -84,22 +78,18 @@ impl Hash for Atom {
     }
 }
 
-
 impl Properties for Atom {
     fn symbol(&self) -> String {
         self.symbol.to_owned()
     }
 
-
     fn name(&self) -> String {
         self.name.to_owned()
     }
 
-
     fn mass(&self) -> AtomMass {
         self.mass.clone()
     }
-
 
     fn is_diatomic(&self) -> bool {
         // NOTE: Atom's can never have two atoms, so is never a valid diatomic molecule

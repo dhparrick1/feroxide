@@ -1,60 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `src/data_atoms.rs`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang">
-
-    <title>data_atoms.rs.html -- source</title>
-
-    <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
-    
-    <link rel="stylesheet" type="text/css" href="../../dark.css">
-    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
-    <script src="../../storage.js"></script>
-    
-
-    
-    
-</head>
-<body class="rustdoc source">
-    <!--[if lte IE 8]>
-    <div class="warning">
-        This old browser is unsupported and will most likely display funky
-        things.
-    </div>
-    <![endif]-->
-
-    
-
-    <nav class="sidebar">
-        <div class="sidebar-menu">&#9776;</div>
-        
-        
-    </nav>
-
-    <div class="theme-picker">
-        <button id="theme-picker" aria-label="Pick another theme!">
-            <img src="../../brush.svg" width="18" alt="Pick another theme!">
-        </button>
-        <div id="theme-choices"></div>
-    </div>
-    <script src="../../theme.js"></script>
-    <nav class="sub">
-        <form class="search-form js-only">
-            <div class="search-container">
-                <input class="search-input" name="search"
-                       autocomplete="off"
-                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
-                       type="search">
-            </div>
-        </form>
-    </nav>
-
-    <section id='main' class="content"><pre class="line-numbers"><span id="1">  1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `src/data_atoms.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>data_atoms.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><input class="search-input" name="search" autocomplete="off" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -290,29 +234,33 @@
 <span class="kw">use</span> <span class="ident">atom</span>::<span class="ident">Atom</span>;
 <span class="kw">use</span> <span class="ident">types</span>::{ <span class="ident">AtomNumber</span>, <span class="ident">AtomMass</span>, <span class="ident">AtomGroup</span> };
 
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SULFUR</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">16</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">32.06000</span>}, <span class="ident">symbol</span>: <span class="string">&quot;S&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;sulfur&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">16</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">IRON</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">26</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">55.84500</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Fe&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;iron&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">8</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
 
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RADON</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">86</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">222.00000</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Rn&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;radon&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">18</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ASTATINE</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">85</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">210.00000</span>}, <span class="ident">symbol</span>: <span class="string">&quot;At&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;astatine&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">17</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
 
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">XENON</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">54</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">131.29300</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Xe&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;xenon&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">18</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">VANADIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">23</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">50.94150</span>}, <span class="ident">symbol</span>: <span class="string">&quot;V&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;vanadium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">5</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
+
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">THALLIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">81</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">204.38000</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Tl&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;thallium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">13</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
 
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">GERMANIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
     <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">32</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">72.63000</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Ge&quot;</span>,
     <span class="ident">name</span>: <span class="string">&quot;germanium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">14</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
 
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">POTASSIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">19</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">39.09830</span>}, <span class="ident">symbol</span>: <span class="string">&quot;K&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;potassium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">1</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ANTIMONY</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">51</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">121.76000</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Sb&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;antimony&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">15</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
 
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">BARIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">56</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">137.32700</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Ba&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;barium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">2</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SCANDIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">21</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">44.95591</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Sc&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;scandium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">3</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
 
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">BROMINE</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
     <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">35</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">79.90400</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Br&quot;</span>,
@@ -322,265 +270,197 @@
     <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">79</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">196.96657</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Au&quot;</span>,
     <span class="ident">name</span>: <span class="string">&quot;gold&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">11</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
 
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">VANADIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">23</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">50.94150</span>}, <span class="ident">symbol</span>: <span class="string">&quot;V&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;vanadium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">5</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TITANIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">22</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">47.86700</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Ti&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;titanium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">4</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
-
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">POLONIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
     <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">84</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">209.00000</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Po&quot;</span>,
     <span class="ident">name</span>: <span class="string">&quot;polonium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">16</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CARBON</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">6</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">12.01100</span>}, <span class="ident">symbol</span>: <span class="string">&quot;C&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;carbon&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">14</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">FLUORINE</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">9</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">18.99840</span>}, <span class="ident">symbol</span>: <span class="string">&quot;F&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;fluorine&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">17</span>}, <span class="ident">diatomic</span>: <span class="bool-val">true</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">INDIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">49</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">114.81800</span>}, <span class="ident">symbol</span>: <span class="string">&quot;In&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;indium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">13</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SELENIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">34</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">78.97100</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Se&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;selenium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">16</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">KRYPTON</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">36</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">83.79800</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Kr&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;krypton&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">18</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
 
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">GALLIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
     <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">31</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">69.72300</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Ga&quot;</span>,
     <span class="ident">name</span>: <span class="string">&quot;gallium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">13</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
 
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ASTATINE</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">85</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">210.00000</span>}, <span class="ident">symbol</span>: <span class="string">&quot;At&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;astatine&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">17</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LITHIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">3</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">6.94000</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Li&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;lithium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">1</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CALCIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">20</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">40.07800</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Ca&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;calcium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">2</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">IODINE</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">53</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">126.90447</span>}, <span class="ident">symbol</span>: <span class="string">&quot;I&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;iodine&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">17</span>}, <span class="ident">diatomic</span>: <span class="bool-val">true</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">IRON</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">26</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">55.84500</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Fe&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;iron&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">8</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TELLURIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">52</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">127.60000</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Te&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;tellurium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">16</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TIN</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">50</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">118.71000</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Sn&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;tin&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">14</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RUBIDIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">37</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">85.46780</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Rb&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;rubidium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">1</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
 
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">MANGANESE</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
     <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">25</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">54.93805</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Mn&quot;</span>,
     <span class="ident">name</span>: <span class="string">&quot;manganese&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">7</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
 
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CHLORINE</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">17</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">35.45000</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Cl&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;chlorine&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">17</span>}, <span class="ident">diatomic</span>: <span class="bool-val">true</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SODIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">11</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">22.98977</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Na&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;sodium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">1</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">MERCURY</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">80</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">200.59200</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Hg&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;mercury&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">12</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">NICKEL</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">28</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">58.69340</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Ni&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;nickel&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">10</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ZINC</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">30</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">65.38000</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Zn&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;zinc&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">12</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">THALLIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">81</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">204.38000</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Tl&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;thallium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">13</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SCANDIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">21</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">44.95591</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Sc&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;scandium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">3</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">OXYGEN</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">8</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">15.99900</span>}, <span class="ident">symbol</span>: <span class="string">&quot;O&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;oxygen&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">16</span>}, <span class="ident">diatomic</span>: <span class="bool-val">true</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ANTIMONY</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">51</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">121.76000</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Sb&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;antimony&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">15</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">FRANCIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">87</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">223.00000</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Fr&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;francium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">1</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ARGON</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">18</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">39.94800</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Ar&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;argon&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">18</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">COPPER</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">29</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">63.54600</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Cu&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;copper&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">11</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CHROMIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">24</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">51.99610</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Cr&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;chromium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">6</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CAESIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">55</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">132.90546</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Cs&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;caesium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">1</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LEAD</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">82</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">207.20000</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Pb&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;lead&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">14</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CADMIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">48</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">112.41400</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Cd&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;cadium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">12</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">BISMUTH</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">83</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">208.98039</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Bi&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;bismuth&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">15</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">BORON</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">5</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">10.81000</span>}, <span class="ident">symbol</span>: <span class="string">&quot;B&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;boron&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">13</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">NITROGEN</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">7</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">14.00700</span>}, <span class="ident">symbol</span>: <span class="string">&quot;N&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;nitrogen&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">15</span>}, <span class="ident">diatomic</span>: <span class="bool-val">true</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RUBIDIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">37</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">85.46780</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Rb&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;rubidium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">1</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PLATINUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">78</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">195.08400</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Pt&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;platinum&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">10</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SILVER</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">47</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">107.86820</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Ag&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;silver&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">11</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">NEON</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">10</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">20.17970</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Ne&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;neon&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">18</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">RADON</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">86</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">222.00000</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Rn&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;radon&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">18</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
 
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SILICON</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
     <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">14</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">28.08500</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Si&quot;</span>,
     <span class="ident">name</span>: <span class="string">&quot;silicon&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">14</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
 
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PHOSPHORUS</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">15</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">30.97376</span>}, <span class="ident">symbol</span>: <span class="string">&quot;P&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;phosphorus&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">15</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CARBON</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">6</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">12.01100</span>}, <span class="ident">symbol</span>: <span class="string">&quot;C&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;carbon&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">14</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
 
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">COBALT</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">27</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">58.93319</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Co&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;cobalt&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">9</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SILVER</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">47</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">107.86820</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Ag&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;silver&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">11</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
 
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">BERYLLIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">4</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">9.01218</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Be&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;beryllium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">2</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">BARIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">56</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">137.32700</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Ba&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;barium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">2</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
 
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ARSENIC</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">33</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">74.92159</span>}, <span class="ident">symbol</span>: <span class="string">&quot;As&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;arsenic&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">15</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">HYDROGEN</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">1</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">1.00800</span>}, <span class="ident">symbol</span>: <span class="string">&quot;H&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;hydrogen&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">1</span>}, <span class="ident">diatomic</span>: <span class="bool-val">true</span> };
-
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">MAGNESIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
-    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">12</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">24.30500</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Mg&quot;</span>,
-    <span class="ident">name</span>: <span class="string">&quot;magnesium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">2</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">INDIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">49</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">114.81800</span>}, <span class="ident">symbol</span>: <span class="string">&quot;In&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;indium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">13</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
 
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">HELIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
     <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">2</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">4.00260</span>}, <span class="ident">symbol</span>: <span class="string">&quot;He&quot;</span>,
     <span class="ident">name</span>: <span class="string">&quot;helium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">18</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
 
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PLATINUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">78</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">195.08400</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Pt&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;platinum&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">10</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
+
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">KRYPTON</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">36</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">83.79800</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Kr&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;krypton&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">18</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
+
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">OXYGEN</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">8</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">15.99900</span>}, <span class="ident">symbol</span>: <span class="string">&quot;O&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;oxygen&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">16</span>}, <span class="ident">diatomic</span>: <span class="bool-val">true</span> };
+
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CALCIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">20</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">40.07800</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Ca&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;calcium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">2</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
+
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ZINC</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">30</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">65.38000</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Zn&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;zinc&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">12</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
+
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">MERCURY</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">80</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">200.59200</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Hg&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;mercury&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">12</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
+
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SELENIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">34</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">78.97100</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Se&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;selenium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">16</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
+
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">IODINE</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">53</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">126.90447</span>}, <span class="ident">symbol</span>: <span class="string">&quot;I&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;iodine&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">17</span>}, <span class="ident">diatomic</span>: <span class="bool-val">true</span> };
+
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">NITROGEN</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">7</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">14.00700</span>}, <span class="ident">symbol</span>: <span class="string">&quot;N&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;nitrogen&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">15</span>}, <span class="ident">diatomic</span>: <span class="bool-val">true</span> };
+
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">BORON</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">5</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">10.81000</span>}, <span class="ident">symbol</span>: <span class="string">&quot;B&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;boron&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">13</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
+
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ARSENIC</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">33</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">74.92159</span>}, <span class="ident">symbol</span>: <span class="string">&quot;As&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;arsenic&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">15</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
+
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">BERYLLIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">4</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">9.01218</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Be&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;beryllium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">2</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
+
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">BISMUTH</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">83</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">208.98039</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Bi&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;bismuth&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">15</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
+
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">HYDROGEN</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">1</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">1.00800</span>}, <span class="ident">symbol</span>: <span class="string">&quot;H&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;hydrogen&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">1</span>}, <span class="ident">diatomic</span>: <span class="bool-val">true</span> };
+
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TITANIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">22</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">47.86700</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Ti&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;titanium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">4</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
+
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">COPPER</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">29</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">63.54600</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Cu&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;copper&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">11</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
+
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CADMIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">48</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">112.41400</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Cd&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;cadium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">12</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
+
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">XENON</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">54</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">131.29300</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Xe&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;xenon&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">18</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
+
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">MAGNESIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">12</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">24.30500</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Mg&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;magnesium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">2</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
+
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">NICKEL</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">28</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">58.69340</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Ni&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;nickel&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">10</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
+
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">COBALT</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">27</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">58.93319</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Co&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;cobalt&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">9</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
+
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CHLORINE</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">17</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">35.45000</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Cl&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;chlorine&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">17</span>}, <span class="ident">diatomic</span>: <span class="bool-val">true</span> };
+
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ARGON</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">18</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">39.94800</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Ar&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;argon&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">18</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
+
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ALUMINIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
     <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">13</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">26.98154</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Al&quot;</span>,
     <span class="ident">name</span>: <span class="string">&quot;aluminium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">13</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
 
-<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ALL_ATOMS</span>: <span class="kw-2">&amp;</span>[<span class="ident">Atom</span>] <span class="op">=</span> <span class="kw-2">&amp;</span>[<span class="ident">SULFUR</span>, <span class="ident">RADON</span>, <span class="ident">XENON</span>, <span class="ident">GERMANIUM</span>, <span class="ident">POTASSIUM</span>, <span class="ident">BARIUM</span>, <span class="ident">BROMINE</span>, <span class="ident">GOLD</span>, <span class="ident">VANADIUM</span>, <span class="ident">TITANIUM</span>, <span class="ident">POLONIUM</span>, <span class="ident">CARBON</span>, <span class="ident">FLUORINE</span>, <span class="ident">INDIUM</span>, <span class="ident">SELENIUM</span>, <span class="ident">KRYPTON</span>, <span class="ident">GALLIUM</span>, <span class="ident">ASTATINE</span>, <span class="ident">LITHIUM</span>, <span class="ident">CALCIUM</span>, <span class="ident">IODINE</span>, <span class="ident">IRON</span>, <span class="ident">TELLURIUM</span>, <span class="ident">TIN</span>, <span class="ident">MANGANESE</span>, <span class="ident">CHLORINE</span>, <span class="ident">SODIUM</span>, <span class="ident">MERCURY</span>, <span class="ident">NICKEL</span>, <span class="ident">ZINC</span>, <span class="ident">THALLIUM</span>, <span class="ident">SCANDIUM</span>, <span class="ident">OXYGEN</span>, <span class="ident">ANTIMONY</span>, <span class="ident">FRANCIUM</span>, <span class="ident">ARGON</span>, <span class="ident">COPPER</span>, <span class="ident">CHROMIUM</span>, <span class="ident">CAESIUM</span>, <span class="ident">LEAD</span>, <span class="ident">CADMIUM</span>, <span class="ident">BISMUTH</span>, <span class="ident">BORON</span>, <span class="ident">NITROGEN</span>, <span class="ident">RUBIDIUM</span>, <span class="ident">PLATINUM</span>, <span class="ident">SILVER</span>, <span class="ident">NEON</span>, <span class="ident">SILICON</span>, <span class="ident">PHOSPHORUS</span>, <span class="ident">COBALT</span>, <span class="ident">BERYLLIUM</span>, <span class="ident">ARSENIC</span>, <span class="ident">HYDROGEN</span>, <span class="ident">MAGNESIUM</span>, <span class="ident">HELIUM</span>, <span class="ident">ALUMINIUM</span>];</pre>
-</section>
-    <section id='search' class="content hidden"></section>
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LITHIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">3</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">6.94000</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Li&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;lithium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">1</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
 
-    <section class="footer"></section>
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TIN</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">50</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">118.71000</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Sn&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;tin&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">14</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
 
-    <aside id="help" class="hidden">
-        <div>
-            <h1 class="hidden">Help</h1>
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CAESIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">55</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">132.90546</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Cs&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;caesium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">1</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
 
-            <div class="shortcuts">
-                <h2>Keyboard Shortcuts</h2>
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SULFUR</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">16</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">32.06000</span>}, <span class="ident">symbol</span>: <span class="string">&quot;S&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;sulfur&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">16</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
 
-                <dl>
-                    <dt><kbd>?</kbd></dt>
-                    <dd>Show this help dialog</dd>
-                    <dt><kbd>S</kbd></dt>
-                    <dd>Focus the search field</dd>
-                    <dt><kbd>↑</kbd></dt>
-                    <dd>Move up in search results</dd>
-                    <dt><kbd>↓</kbd></dt>
-                    <dd>Move down in search results</dd>
-                    <dt><kbd>↹</kbd></dt>
-                    <dd>Switch tab</dd>
-                    <dt><kbd>&#9166;</kbd></dt>
-                    <dd>Go to active search result</dd>
-                    <dt><kbd>+</kbd></dt>
-                    <dd>Expand all sections</dd>
-                    <dt><kbd>-</kbd></dt>
-                    <dd>Collapse all sections</dd>
-                </dl>
-            </div>
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">NEON</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">10</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">20.17970</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Ne&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;neon&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">18</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
 
-            <div class="infos">
-                <h2>Search Tricks</h2>
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">PHOSPHORUS</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">15</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">30.97376</span>}, <span class="ident">symbol</span>: <span class="string">&quot;P&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;phosphorus&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">15</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
 
-                <p>
-                    Prefix searches with a type followed by a colon (e.g.
-                    <code>fn:</code>) to restrict the search to a given type.
-                </p>
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">POTASSIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">19</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">39.09830</span>}, <span class="ident">symbol</span>: <span class="string">&quot;K&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;potassium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">1</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
 
-                <p>
-                    Accepted types are: <code>fn</code>, <code>mod</code>,
-                    <code>struct</code>, <code>enum</code>,
-                    <code>trait</code>, <code>type</code>, <code>macro</code>,
-                    and <code>const</code>.
-                </p>
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">SODIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">11</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">22.98977</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Na&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;sodium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">1</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
 
-                <p>
-                    Search functions by type signature (e.g.
-                    <code>vec -> usize</code> or <code>* -> vec</code>)
-                </p>
-            </div>
-        </div>
-    </aside>
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">CHROMIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">24</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">51.99610</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Cr&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;chromium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">6</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
 
-    
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">FRANCIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">87</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">223.00000</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Fr&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;francium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">1</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
 
-    <script>
-        window.rootPath = "../../";
-        window.currentCrate = "feroxide";
-    </script>
-    <script src="../../main.js"></script>
-    <script defer src="../../search-index.js"></script>
-</body>
-</html>
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">TELLURIUM</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">52</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">127.60000</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Te&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;tellurium&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">16</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
+
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">LEAD</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">82</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">207.20000</span>}, <span class="ident">symbol</span>: <span class="string">&quot;Pb&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;lead&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">14</span>}, <span class="ident">diatomic</span>: <span class="bool-val">false</span> };
+
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">FLUORINE</span>: <span class="ident">Atom</span> <span class="op">=</span> <span class="ident">Atom</span> {
+    <span class="ident">number</span>: <span class="ident">AtomNumber</span>{<span class="number">0</span>:<span class="number">9</span>}, <span class="ident">mass</span>: <span class="ident">AtomMass</span>{<span class="number">0</span>:<span class="number">18.99840</span>}, <span class="ident">symbol</span>: <span class="string">&quot;F&quot;</span>,
+    <span class="ident">name</span>: <span class="string">&quot;fluorine&quot;</span>, <span class="ident">group</span>: <span class="ident">AtomGroup</span>{<span class="number">0</span>:<span class="number">17</span>}, <span class="ident">diatomic</span>: <span class="bool-val">true</span> };
+
+<span class="kw">pub</span> <span class="kw">const</span> <span class="ident">ALL_ATOMS</span>: <span class="kw-2">&amp;</span>[<span class="ident">Atom</span>] <span class="op">=</span> <span class="kw-2">&amp;</span>[<span class="ident">IRON</span>, <span class="ident">ASTATINE</span>, <span class="ident">VANADIUM</span>, <span class="ident">THALLIUM</span>, <span class="ident">GERMANIUM</span>, <span class="ident">ANTIMONY</span>, <span class="ident">SCANDIUM</span>, <span class="ident">BROMINE</span>, <span class="ident">GOLD</span>, <span class="ident">POLONIUM</span>, <span class="ident">GALLIUM</span>, <span class="ident">RUBIDIUM</span>, <span class="ident">MANGANESE</span>, <span class="ident">RADON</span>, <span class="ident">SILICON</span>, <span class="ident">CARBON</span>, <span class="ident">SILVER</span>, <span class="ident">BARIUM</span>, <span class="ident">INDIUM</span>, <span class="ident">HELIUM</span>, <span class="ident">PLATINUM</span>, <span class="ident">KRYPTON</span>, <span class="ident">OXYGEN</span>, <span class="ident">CALCIUM</span>, <span class="ident">ZINC</span>, <span class="ident">MERCURY</span>, <span class="ident">SELENIUM</span>, <span class="ident">IODINE</span>, <span class="ident">NITROGEN</span>, <span class="ident">BORON</span>, <span class="ident">ARSENIC</span>, <span class="ident">BERYLLIUM</span>, <span class="ident">BISMUTH</span>, <span class="ident">HYDROGEN</span>, <span class="ident">TITANIUM</span>, <span class="ident">COPPER</span>, <span class="ident">CADMIUM</span>, <span class="ident">XENON</span>, <span class="ident">MAGNESIUM</span>, <span class="ident">NICKEL</span>, <span class="ident">COBALT</span>, <span class="ident">CHLORINE</span>, <span class="ident">ARGON</span>, <span class="ident">ALUMINIUM</span>, <span class="ident">LITHIUM</span>, <span class="ident">TIN</span>, <span class="ident">CAESIUM</span>, <span class="ident">SULFUR</span>, <span class="ident">NEON</span>, <span class="ident">PHOSPHORUS</span>, <span class="ident">POTASSIUM</span>, <span class="ident">SODIUM</span>, <span class="ident">CHROMIUM</span>, <span class="ident">FRANCIUM</span>, <span class="ident">TELLURIUM</span>, <span class="ident">LEAD</span>, <span class="ident">FLUORINE</span>];</pre>
+</section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g. <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g. <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g. <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../../";window.currentCrate = "feroxide";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script defer src="../../search-index.js"></script></body></html>

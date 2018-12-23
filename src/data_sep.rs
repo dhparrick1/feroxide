@@ -5,10 +5,8 @@ use types::*;
 
 use std::collections::HashMap;
 
-
 // Reference: https://en.wikipedia.org/wiki/Standard_electrode_potential_(data_page)
 // In doubt: Reference: Binas 6th edition, table 49
-
 
 /// Get the Standard Electrode Potential (SEP) of a reaction
 pub fn get_sep(elem_reaction: &ElemReaction<Ion>) -> Option<SEP> {
@@ -21,25 +19,21 @@ pub fn get_sep(elem_reaction: &ElemReaction<Ion>) -> Option<SEP> {
     }
 }
 
-
 // This is mainly used for debugging purposes, to make sure no invalid reaction are added
 macro_rules! str_to_reaction {
     ($s:expr) => {
-        valid_or_panic(
-            safe_unwrap_reaction(
-                ElemReaction::<Ion>::ion_from_string($s),
-                $s
-            )
-        )
-    }
+        valid_or_panic(safe_unwrap_reaction(
+            ElemReaction::<Ion>::ion_from_string($s),
+            $s,
+        ))
+    };
 }
 
 macro_rules! add_str_reaction {
     ($map:expr, $r:expr, $sep:expr) => {
         $map.insert(str_to_reaction!($r), SEP::from($sep))
-    }
+    };
 }
-
 
 /// Make sure the reaction is valid, panic otherwise
 fn valid_or_panic(reaction: ElemReaction<Ion>) -> ElemReaction<Ion> {
@@ -50,7 +44,6 @@ fn valid_or_panic(reaction: ElemReaction<Ion>) -> ElemReaction<Ion> {
     reaction
 }
 
-
 /// Check if the reaction is defined, then unwrap. Otherwise: panic!
 fn safe_unwrap_reaction(reaction: Option<ElemReaction<Ion>>, s: &str) -> ElemReaction<Ion> {
     if reaction == None {
@@ -59,7 +52,6 @@ fn safe_unwrap_reaction(reaction: Option<ElemReaction<Ion>>, s: &str) -> ElemRea
 
     reaction.unwrap()
 }
-
 
 pub fn get_reactions_with_element(elem: &Ion) -> Vec<(ElemReaction<Ion>, SEP)> {
     let mut reactions = vec![];
@@ -87,10 +79,8 @@ pub fn get_reactions_with_element(elem: &Ion) -> Vec<(ElemReaction<Ion>, SEP)> {
         }
     }
 
-
     reactions
 }
-
 
 lazy_static! {
     pub static ref SEPMAP: HashMap<ElemReaction<Ion>, SEP> = {

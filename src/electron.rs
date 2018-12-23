@@ -3,7 +3,6 @@ use ion::Ion;
 use molecule::*;
 use types::*;
 
-
 lazy_static! {
 
     // NOTE: Since Ion::from_string depends on ELECTRON being available,

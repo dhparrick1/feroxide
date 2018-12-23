@@ -1,10 +1,9 @@
 use electron::ELECTRON;
-use namings::*;
 use molecule::Molecule;
+use namings::*;
 use trait_element::Element;
 use trait_properties::Properties;
 use types::*;
-
 
 #[derive(Debug, Eq, Clone)]
 /// An `Ion`
@@ -15,7 +14,6 @@ pub struct Ion {
     /// The charge of this ion
     pub charge: Option<AtomCharge>,
 }
-
 
 impl Ion {
     /// Convert a string representation of an `Ion` into one
@@ -48,7 +46,6 @@ impl Ion {
                 charge += to_number!(c) as i8;
                 continue;
             }
-
 
             if c == ';' {
                 // Electron
@@ -105,7 +102,6 @@ impl Ion {
         }
     }
 
-
     /// Convert a `Molecule` into an `Ion`
     pub fn from_molecule(molecule: Molecule) -> Ion {
         Ion {
@@ -113,7 +109,6 @@ impl Ion {
             charge: None, // Will be calculated later
         }
     }
-
 
     /// Calculate the charge of this `Ion`
     pub fn calculate_charge(&self) -> Option<AtomCharge> {
@@ -128,8 +123,8 @@ impl Ion {
             if let Some(atom_charge) = molecule_compound.atom.charge_by_group() {
                 let mol_charge = AtomCharge::from(
                     // NOTE: Can't multiply u8 and i8, so they need to be casted first
-                    (molecule_compound.amount as AtomCharge_type) *
-                        (atom_charge.0 as AtomCharge_type),
+                    (molecule_compound.amount as AtomCharge_type)
+                        * (atom_charge.0 as AtomCharge_type),
                 );
 
                 charge += mol_charge;
@@ -143,7 +138,6 @@ impl Ion {
     }
 }
 
-
 impl Element for Ion {
     // Make sure that the charge is calculated when required
     fn get_charge(&self) -> Option<AtomCharge> {
@@ -154,17 +148,14 @@ impl Element for Ion {
         }
     }
 
-
     fn get_molecule(self) -> Option<Molecule> {
         Some(self.molecule)
     }
-
 
     fn get_ion(self) -> Option<Ion> {
         Some(self)
     }
 }
-
 
 impl Properties for Ion {
     fn symbol(&self) -> String {
@@ -180,7 +171,6 @@ impl Properties for Ion {
 
         symbol
     }
-
 
     fn name(&self) -> String {
         let mut name = String::new();
@@ -198,24 +188,20 @@ impl Properties for Ion {
         name
     }
 
-
     fn mass(&self) -> AtomMass {
         self.molecule.mass()
     }
-
 
     fn is_diatomic(&self) -> bool {
         self.molecule.is_diatomic()
     }
 }
 
-
 impl PartialEq for Ion {
     fn eq(&self, rhs: &Self) -> bool {
         self.molecule == rhs.molecule && self.get_charge() == rhs.get_charge()
     }
 }
-
 
 use std::hash::*;
 

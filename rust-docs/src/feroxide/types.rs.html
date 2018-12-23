@@ -1,60 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `src/types.rs`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang">
-
-    <title>types.rs.html -- source</title>
-
-    <link rel="stylesheet" type="text/css" href="../../normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle">
-    
-    <link rel="stylesheet" type="text/css" href="../../dark.css">
-    <link rel="stylesheet" type="text/css" href="../../main.css" id="themeStyle">
-    <script src="../../storage.js"></script>
-    
-
-    
-    
-</head>
-<body class="rustdoc source">
-    <!--[if lte IE 8]>
-    <div class="warning">
-        This old browser is unsupported and will most likely display funky
-        things.
-    </div>
-    <![endif]-->
-
-    
-
-    <nav class="sidebar">
-        <div class="sidebar-menu">&#9776;</div>
-        
-        
-    </nav>
-
-    <div class="theme-picker">
-        <button id="theme-picker" aria-label="Pick another theme!">
-            <img src="../../brush.svg" width="18" alt="Pick another theme!">
-        </button>
-        <div id="theme-choices"></div>
-    </div>
-    <script src="../../theme.js"></script>
-    <nav class="sub">
-        <form class="search-form js-only">
-            <div class="search-container">
-                <input class="search-input" name="search"
-                       autocomplete="off"
-                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
-                       type="search">
-            </div>
-        </form>
-    </nav>
-
-    <section id='main' class="content"><pre class="line-numbers"><span id="1">  1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `src/types.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>types.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><input class="search-input" name="search" autocomplete="off" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -255,30 +199,16 @@
 <span id="199">199</span>
 <span id="200">200</span>
 <span id="201">201</span>
-<span id="202">202</span>
-<span id="203">203</span>
-<span id="204">204</span>
-<span id="205">205</span>
-<span id="206">206</span>
-<span id="207">207</span>
-<span id="208">208</span>
-<span id="209">209</span>
-<span id="210">210</span>
-<span id="211">211</span>
-<span id="212">212</span>
-<span id="213">213</span>
-<span id="214">214</span>
 </pre><pre class="rust ">
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">dead_code</span>)]</span>
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">non_camel_case_types</span>)]</span>
 
-<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">fmt</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">cmp</span>;
+<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">fmt</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">ops</span>;
 
-
 <span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">allow_conversion</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">class</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="kw">type</span>:<span class="macro-nonterminal">ident</span>) <span class="op">=&gt;</span> (
+    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">class</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="kw">type</span>:<span class="macro-nonterminal">ident</span>) <span class="op">=&gt;</span> {
         <span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="macro-nonterminal">$</span><span class="kw">type</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">class</span> {
             <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">x</span>: <span class="macro-nonterminal">$</span><span class="kw">type</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
                 <span class="macro-nonterminal">$</span><span class="macro-nonterminal">class</span>(<span class="ident">x</span>)
@@ -290,12 +220,11 @@
                 <span class="ident">x</span>.<span class="number">0</span>
             }
         }
-    )
+    };
 }
 
-
 <span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">overload_operators</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">class</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="kw">type</span>:<span class="macro-nonterminal">ident</span>) <span class="op">=&gt;</span> (
+    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">class</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="kw">type</span>:<span class="macro-nonterminal">ident</span>) <span class="op">=&gt;</span> {
         <span class="kw">impl</span> <span class="ident">Eq</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">class</span> {}
 
         <span class="kw">impl</span> <span class="ident">Ord</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">class</span> {
@@ -379,21 +308,18 @@
                 <span class="self">self</span>.<span class="number">0</span> <span class="op">%=</span> <span class="macro-nonterminal">rhs</span>
             }
         }
-    )
+    };
 }
 
-
 <span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">allow_display</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">class</span>:<span class="ident">ident</span>) <span class="op">=&gt;</span> (
+    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">class</span>:<span class="ident">ident</span>) <span class="op">=&gt;</span> {
         <span class="kw">impl</span> <span class="ident">fmt</span>::<span class="ident">Display</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">class</span> {
             <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">formatter</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">fmt</span>::<span class="ident">Formatter</span>) <span class="op">-&gt;</span> <span class="ident">fmt</span>::<span class="prelude-ty">Result</span> {
                 <span class="self">self</span>.<span class="number">0</span>.<span class="ident">fmt</span>(<span class="ident">formatter</span>)
             }
         }
-    )
+    };
 }
-
-
 
 <span class="doccomment">/// should fit 1 to 18 [  ]</span>
 <span class="comment">// pub type AtomGroup = u8;</span>
@@ -404,7 +330,6 @@
 <span class="macro">overload_operators</span><span class="macro">!</span>(<span class="ident">AtomGroup</span>, <span class="ident">AtomGroup_type</span>);
 <span class="macro">allow_display</span><span class="macro">!</span>(<span class="ident">AtomGroup</span>);
 
-
 <span class="doccomment">/// should fit 0.0 to 294.0+, with normal precision [ gram / mol ]</span>
 <span class="comment">// pub type AtomMass = f32;</span>
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">AtomMass_type</span> <span class="op">=</span> <span class="ident">f32</span>;
@@ -413,7 +338,6 @@
 <span class="macro">allow_conversion</span><span class="macro">!</span>(<span class="ident">AtomMass</span>, <span class="ident">AtomMass_type</span>);
 <span class="macro">overload_operators</span><span class="macro">!</span>(<span class="ident">AtomMass</span>, <span class="ident">AtomMass_type</span>);
 <span class="macro">allow_display</span><span class="macro">!</span>(<span class="ident">AtomMass</span>);
-
 
 <span class="doccomment">/// should fit 0 to 118+ [  ]</span>
 <span class="comment">// pub type AtomNumber = u8;</span>
@@ -424,7 +348,6 @@
 <span class="macro">overload_operators</span><span class="macro">!</span>(<span class="ident">AtomNumber</span>, <span class="ident">AtomNumber_type</span>);
 <span class="macro">allow_display</span><span class="macro">!</span>(<span class="ident">AtomNumber</span>);
 
-
 <span class="doccomment">/// should fit 0.0 to 1e5+, with high precision [ Joule ]</span>
 <span class="comment">// pub type Energy = f64;</span>
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">Energy_type</span> <span class="op">=</span> <span class="ident">f64</span>;
@@ -433,7 +356,6 @@
 <span class="macro">allow_conversion</span><span class="macro">!</span>(<span class="ident">Energy</span>, <span class="ident">Energy_type</span>);
 <span class="macro">overload_operators</span><span class="macro">!</span>(<span class="ident">Energy</span>, <span class="ident">Energy_type</span>);
 <span class="macro">allow_display</span><span class="macro">!</span>(<span class="ident">Energy</span>);
-
 
 <span class="doccomment">/// should fit -7 to 7 [  ]</span>
 <span class="comment">// pub type AtomCharge = i8;</span>
@@ -444,7 +366,6 @@
 <span class="macro">overload_operators</span><span class="macro">!</span>(<span class="ident">AtomCharge</span>, <span class="ident">AtomCharge_type</span>);
 <span class="macro">allow_display</span><span class="macro">!</span>(<span class="ident">AtomCharge</span>);
 
-
 <span class="doccomment">/// should fit 0.0 to 1e5+, with high precision [ gram ]</span>
 <span class="comment">// pub type Mass = f64;</span>
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">Mass_type</span> <span class="op">=</span> <span class="ident">f64</span>;
@@ -453,7 +374,6 @@
 <span class="macro">allow_conversion</span><span class="macro">!</span>(<span class="ident">Mass</span>, <span class="ident">Mass_type</span>);
 <span class="macro">overload_operators</span><span class="macro">!</span>(<span class="ident">Mass</span>, <span class="ident">Mass_type</span>);
 <span class="macro">allow_display</span><span class="macro">!</span>(<span class="ident">Mass</span>);
-
 
 <span class="doccomment">/// should fit 0.0 to 1e5+, with high precision [ mol ]</span>
 <span class="comment">// pub type Moles = f64;</span>
@@ -464,7 +384,6 @@
 <span class="macro">overload_operators</span><span class="macro">!</span>(<span class="ident">Moles</span>, <span class="ident">Moles_type</span>);
 <span class="macro">allow_display</span><span class="macro">!</span>(<span class="ident">Moles</span>);
 
-
 <span class="doccomment">/// should fit -5.0 to 5.0, with normal precision [ volt ]</span>
 <span class="comment">// pub type SEP = f32;</span>
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">SEP_type</span> <span class="op">=</span> <span class="ident">f32</span>;
@@ -473,7 +392,6 @@
 <span class="macro">allow_conversion</span><span class="macro">!</span>(<span class="ident">SEP</span>, <span class="ident">SEP_type</span>);
 <span class="macro">overload_operators</span><span class="macro">!</span>(<span class="ident">SEP</span>, <span class="ident">SEP_type</span>);
 <span class="macro">allow_display</span><span class="macro">!</span>(<span class="ident">SEP</span>);
-
 
 <span class="doccomment">/// should fit -4000.0 to 2000.0, with normal precision [ kJ/mol ]</span>
 <span class="comment">// pub type SEP = f32;</span>
@@ -484,68 +402,4 @@
 <span class="macro">overload_operators</span><span class="macro">!</span>(<span class="ident">SEF</span>, <span class="ident">SEF_type</span>);
 <span class="macro">allow_display</span><span class="macro">!</span>(<span class="ident">SEF</span>);
 </pre>
-</section>
-    <section id='search' class="content hidden"></section>
-
-    <section class="footer"></section>
-
-    <aside id="help" class="hidden">
-        <div>
-            <h1 class="hidden">Help</h1>
-
-            <div class="shortcuts">
-                <h2>Keyboard Shortcuts</h2>
-
-                <dl>
-                    <dt><kbd>?</kbd></dt>
-                    <dd>Show this help dialog</dd>
-                    <dt><kbd>S</kbd></dt>
-                    <dd>Focus the search field</dd>
-                    <dt><kbd>↑</kbd></dt>
-                    <dd>Move up in search results</dd>
-                    <dt><kbd>↓</kbd></dt>
-                    <dd>Move down in search results</dd>
-                    <dt><kbd>↹</kbd></dt>
-                    <dd>Switch tab</dd>
-                    <dt><kbd>&#9166;</kbd></dt>
-                    <dd>Go to active search result</dd>
-                    <dt><kbd>+</kbd></dt>
-                    <dd>Expand all sections</dd>
-                    <dt><kbd>-</kbd></dt>
-                    <dd>Collapse all sections</dd>
-                </dl>
-            </div>
-
-            <div class="infos">
-                <h2>Search Tricks</h2>
-
-                <p>
-                    Prefix searches with a type followed by a colon (e.g.
-                    <code>fn:</code>) to restrict the search to a given type.
-                </p>
-
-                <p>
-                    Accepted types are: <code>fn</code>, <code>mod</code>,
-                    <code>struct</code>, <code>enum</code>,
-                    <code>trait</code>, <code>type</code>, <code>macro</code>,
-                    and <code>const</code>.
-                </p>
-
-                <p>
-                    Search functions by type signature (e.g.
-                    <code>vec -> usize</code> or <code>* -> vec</code>)
-                </p>
-            </div>
-        </div>
-    </aside>
-
-    
-
-    <script>
-        window.rootPath = "../../";
-        window.currentCrate = "feroxide";
-    </script>
-    <script src="../../main.js"></script>
-    <script defer src="../../search-index.js"></script>
-</body>
-</html>
+</section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g. <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g. <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g. <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../../";window.currentCrate = "feroxide";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script defer src="../../search-index.js"></script></body></html>

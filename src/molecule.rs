@@ -5,14 +5,12 @@ use trait_element::Element;
 use trait_properties::Properties;
 use types::*;
 
-
 #[derive(Debug, Eq, PartialEq, Clone, Hash)]
 /// A molecule
 pub struct Molecule {
     /// The compounds it contains
     pub compounds: Vec<MoleculeCompound>,
 }
-
 
 #[derive(Debug, Eq, PartialEq, Clone, Hash)]
 /// A compound of a molecule
@@ -24,7 +22,6 @@ pub struct MoleculeCompound {
     pub amount: u8,
 }
 
-
 impl Molecule {
     /// Convert a string representation of a molecule into one
     /// TODO: Parse parentheses, e.g.  Ca3(PO4)2
@@ -35,7 +32,7 @@ impl Molecule {
 
         for c in string.chars() {
             // Ignore whitespace
-            if is_whitespace!(c) {
+            if is_whitespace!(c) || is_separator!(c) {
                 continue;
             }
 
@@ -56,7 +53,6 @@ impl Molecule {
             }
         }
 
-
         if !compounds.is_empty() {
             Some(Molecule { compounds })
         } else {
@@ -64,8 +60,6 @@ impl Molecule {
         }
     }
 }
-
-
 
 impl MoleculeCompound {
     /// Takes a symbol string representing a MoleculeCompound, and turns it into one
@@ -83,8 +77,7 @@ impl MoleculeCompound {
             } else {
                 panic!(
                     "Invalid character '{}' in string \"{}\" for MoleculeCompound",
-                    c,
-                    string
+                    c, string
                 );
             }
         }
@@ -94,14 +87,12 @@ impl MoleculeCompound {
             amount = 1;
         }
 
-
         if let Some(atom) = Atom::from_string(&token) {
             Some(MoleculeCompound { atom, amount })
         } else {
             panic!("Failed to find Atom for {}", &token);
         }
     }
-
 
     /// Converts an Atom into a MoleculeCompound, taking care of diatomic ones
     pub fn from_atom(atom: Atom) -> MoleculeCompound {
@@ -110,7 +101,6 @@ impl MoleculeCompound {
         MoleculeCompound { atom, amount }
     }
 }
-
 
 impl Properties for Molecule {
     fn symbol(&self) -> String {
@@ -122,7 +112,6 @@ impl Properties for Molecule {
 
         symbol
     }
-
 
     fn name(&self) -> String {
         let mut name = String::new();
@@ -136,7 +125,6 @@ impl Properties for Molecule {
         name
     }
 
-
     fn mass(&self) -> AtomMass {
         let mut mass = AtomMass::from(0.0);
 
@@ -147,13 +135,12 @@ impl Properties for Molecule {
         mass
     }
 
-
     fn is_diatomic(&self) -> bool {
-        self.compounds.len() == 1 && self.compounds[0].amount == 2 &&
-            self.compounds[0].atom.diatomic
+        self.compounds.len() == 1
+            && self.compounds[0].amount == 2
+            && self.compounds[0].atom.diatomic
     }
 }
-
 
 impl Properties for MoleculeCompound {
     fn symbol(&self) -> String {
@@ -168,7 +155,6 @@ impl Properties for MoleculeCompound {
         symbol
     }
 
-
     fn name(&self) -> String {
         let mut name = String::new();
 
@@ -181,28 +167,23 @@ impl Properties for MoleculeCompound {
         name
     }
 
-
     fn mass(&self) -> AtomMass {
         self.atom.mass.clone() * (AtomMass_type::from(self.amount))
     }
-
 
     fn is_diatomic(&self) -> bool {
         false
     }
 }
 
-
 impl Element for Molecule {
     fn get_charge(&self) -> Option<AtomCharge> {
         Some(AtomCharge::from(0))
     }
 
-
     fn get_molecule(self) -> Option<Molecule> {
         Some(self)
     }
-
 
     fn get_ion(self) -> Option<Ion> {
         Some(Ion::from_molecule(self.clone()))

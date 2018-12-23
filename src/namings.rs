@@ -1,9 +1,7 @@
 use types::*;
 
-
 // Reference: https://www.shodor.org/unchem/basic/nomen/index.html
 // Reference: BiNaS 6th edition, table 66C
-
 
 /// The basic function which converts a number to greek
 /// This function should only be called by the public `number_to_greek` function
@@ -49,12 +47,10 @@ fn basic_number_to_greek(n: u8, tenplus: bool) -> String {
     }
 }
 
-
 /// Get the last character of a word
 fn last_char(word: &str) -> char {
     word.chars().nth(word.len() - 1).unwrap()
 }
-
 
 /// Convert a number to greek notation
 pub fn number_to_greek(n: u8) -> String {
@@ -79,14 +75,14 @@ pub fn number_to_greek(n: u8) -> String {
         if n == factor_ten * 10 {
             basic_number_to_greek(factor_ten, true) + "conta"
         } else {
-            basic_number_to_greek(n - factor_ten * 10, true) +
-                &basic_number_to_greek(factor_ten, true) + "conta"
+            basic_number_to_greek(n - factor_ten * 10, true)
+                + &basic_number_to_greek(factor_ten, true)
+                + "conta"
         }
     } else {
         panic!(n.to_string().to_owned() + " uncalculatable");
     }
 }
-
 
 /// Convert a number to roman notaion
 pub fn number_to_roman(n: i8) -> String {
@@ -132,7 +128,6 @@ pub fn number_to_roman(n: i8) -> String {
     }
 }
 
-
 /// Convert a number to subscript notation
 #[cfg(not(feature = "no_utf"))]
 pub fn subscript(n: u8) -> String {
@@ -163,12 +158,10 @@ pub fn subscript(n: u8) -> String {
     }
 }
 
-
 #[cfg(feature = "no_utf")]
 pub fn subscript(n: u8) -> String {
     format!("_{{{}}}", n)
 }
-
 
 /// Convert a number to superscript notation
 /// See also `ion_superscript`
@@ -206,7 +199,6 @@ pub fn superscript(n: u8) -> String {
     format!("{}", n)
 }
 
-
 /// Convert a number to ionic superscript notation
 /// The difference with normal superscript notation is that the 1 is omitted,
 /// also, ionic superscript supports negative numbers (of which the sign
@@ -229,7 +221,6 @@ pub fn ion_superscript(ac: &AtomCharge) -> String {
         superscript(n as u8)
     }
 }
-
 
 #[cfg(feature = "no_utf")]
 pub fn ion_superscript(ac: &AtomCharge) -> String {

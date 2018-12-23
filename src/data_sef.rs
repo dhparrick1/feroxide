@@ -3,12 +3,10 @@ use types::*;
 
 use std::collections::HashMap;
 
-
 // Reference: https://en.wikipedia.org/wiki/Standard_enthalpy_of_formation
 // In doubt: Reference: Binas 6th edition, table 57
 // Missing values from http://www.mrbigler.com/misc/energy-of-formation.html
 // and http://www.conradnaleway.net/ThermoData.PDF
-
 
 /// Get the Standard Enthalpy of Formation (SEF) of a ion
 pub fn get_sef(ion: &Ion) -> Option<SEF> {
@@ -19,23 +17,18 @@ pub fn get_sef(ion: &Ion) -> Option<SEF> {
     }
 }
 
-
 // This is mainly used for debugging purposes, to make sure no invalid reaction are added
 macro_rules! str_to_ion {
     ($s:expr) => {
-        safe_unwrap_ion(
-            Ion::from_string($s),
-            $s
-        )
-    }
+        safe_unwrap_ion(Ion::from_string($s), $s)
+    };
 }
 
 macro_rules! add_str_ion {
     ($map:expr, $s:expr, $sef:expr) => {
         $map.insert(str_to_ion!($s), SEF::from($sef))
-    }
+    };
 }
-
 
 /// Check if the ion is defined, then unwrap. Otherwise: panic!
 fn safe_unwrap_ion(ion: Option<Ion>, s: &str) -> Ion {
@@ -45,7 +38,6 @@ fn safe_unwrap_ion(ion: Option<Ion>, s: &str) -> Ion {
 
     ion.unwrap()
 }
-
 
 lazy_static! {
     pub static ref SEFMAP: HashMap<Ion, SEF> = {

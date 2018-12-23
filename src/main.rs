@@ -1,13 +1,10 @@
-#[macro_use(ion_from_molecule)]
 extern crate feroxide;
 
-
-use feroxide::*;
 use feroxide::data_atoms::*;
 use feroxide::data_molecules::*;
-use feroxide::data_sep::*;
 use feroxide::data_sef::*;
-
+use feroxide::data_sep::*;
+use feroxide::*;
 
 fn main() {
     // You can create digital molecules with ease on two ways:
@@ -80,17 +77,14 @@ fn main() {
         },
 
         rhs: ReactionSide {
-            compounds: vec![
-                ReactionCompound {
-                    element: ion_from_molecule!(carbondioxide.clone()),
-                    amount: 2,
-                },
-            ],
+            compounds: vec![ReactionCompound {
+                element: ion_from_molecule!(carbondioxide.clone()),
+                amount: 2,
+            }],
         },
 
         is_equilibrium: true,
     };
-
 
     // Make sure the reaction is valid
     assert!(reaction.equalise());
@@ -102,10 +96,8 @@ fn main() {
     // ... or in symbols (the default)
     println!("{}", reaction.symbol());
 
-
     // Print the contents of the container at the start
     println!("Contents: {}", container);
-
 
     // Run the reaction 10 times
     for i in 0..10 {
@@ -116,13 +108,11 @@ fn main() {
         println!("[{:>2}] Contents: {}", i + 1, container.to_string());
     }
 
-
     // Redox reactions are also possible
     let redox = RedoxReaction {
         oxidator: ElemReaction::<Ion>::ion_from_string("F2 + 2e <> 2F;1-").unwrap(),
         reductor: ElemReaction::<Ion>::ion_from_string("Fe <> Fe;3 + 3e").unwrap(),
     };
-
 
     // Make sure it's valid
     assert!(redox.equalise());
@@ -135,20 +125,17 @@ fn main() {
     println!("oxidator: {}", get_sep(&redox.oxidator).unwrap());
     println!("reductor: {}", get_sep(&redox.reductor).unwrap());
 
-
     // Print the SEF value
     println!(
         "SEF(AlCl3) = {} kJ/mol",
         get_sef(&ion_from_string!("AlCl3")).unwrap()
     );
 
-
-
     // Boom
     println!("\n\n\n");
 
-    let mut water_container = Container::<Ion>::ion_from_string("2000 H2; + 1000 O2; [10000 J]")
-        .unwrap();
+    let mut water_container =
+        Container::<Ion>::ion_from_string("2000 H2; + 1000 O2; [10000 J]").unwrap();
     println!("pre: {}", water_container);
 
     let redox_boom = get_redox_reaction(&water_container).unwrap();
@@ -160,7 +147,6 @@ fn main() {
 
     println!("post: {}", water_container);
     println!("\n\n\n");
-
 
     // Automatic redox reactions
     println!("\n\n\n");
@@ -185,7 +171,6 @@ fn main() {
         available_energy: Energy::from(100_000f64),
     };
 
-
     let redox_reaction = get_redox_reaction(&redox_container);
 
     if let Some(redox) = redox_reaction {
@@ -202,7 +187,6 @@ fn main() {
         println!("\n");
         println!("After 100 times:");
         println!("Container: {}", redox_container);
-
 
         let rust = ElemReaction::<Ion>::ion_from_string("Fe;2+ + 2OH;-  >  FeO2H2;0").unwrap();
 

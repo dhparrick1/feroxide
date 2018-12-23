@@ -1,3 +1,6 @@
+// Ignore clippy warnings about data like 12.01100
+#![allow(excessive_precision)]
+
 // macros \\
 
 #[macro_use]
@@ -8,46 +11,50 @@ extern crate lazy_static;
 
 #[macro_export]
 macro_rules! molecule_from_atom {
-    ($atom:expr) => (
-        Molecule { compounds: vec! { MoleculeCompound::from_atom($atom) } }
-    )
+    ($atom:expr) => {
+        Molecule {
+            compounds: vec![MoleculeCompound::from_atom($atom)],
+        }
+    };
 }
 
 #[macro_export]
 macro_rules! ion_from_molecule {
-    ($molecule:expr) => (
-        Ion { molecule: $molecule, charge: None }
-    )
+    ($molecule:expr) => {
+        Ion {
+            molecule: $molecule,
+            charge: None,
+        }
+    };
 }
 
 #[macro_export]
 macro_rules! ion_from_atom {
-    ($atom:expr) => (
+    ($atom:expr) => {
         ion_from_molecule!(molecule_from_atom!($atom))
-    )
+    };
 }
 
 #[macro_export]
 macro_rules! ion_from_string {
-    ($string:expr) => (
+    ($string:expr) => {
         Ion::from_string($string).unwrap()
-    )
+    };
 }
 
 #[macro_export]
 macro_rules! molecule_from_string {
-    ($string:expr) => (
+    ($string:expr) => {
         Molecule::from_string($string).unwrap()
-    )
+    };
 }
 
 #[macro_export]
 macro_rules! atom_from_string {
-    ($string:expr) => (
+    ($string:expr) => {
         Atom::from_string($string).unwrap()
-    )
+    };
 }
-
 
 mod atom;
 mod container;
@@ -80,13 +87,10 @@ pub use types::*;
 pub mod data_atoms;
 pub mod data_ions;
 pub mod data_molecules;
-pub mod data_sep;
 pub mod data_sef;
+pub mod data_sep;
 
 pub mod display_impls;
-
-
-
 
 // tests \\
 #[test]
@@ -95,7 +99,6 @@ fn display_types_equals_value() {
     assert_eq!(format!("{}", AtomNumber::from(2)), "2");
     assert_eq!(format!("{}", Energy::from(1.23)), "1.23");
 }
-
 
 #[test]
 fn ion_calculate_charge_from_string() {
@@ -107,12 +110,10 @@ fn ion_calculate_charge_from_string() {
     );
 }
 
-
 #[test]
 fn reaction_from_string() {
     use data_atoms::*;
     use data_molecules::*;
-
 
     let reaction = ElemReaction {
         lhs: ReactionSide {
@@ -129,12 +130,10 @@ fn reaction_from_string() {
         },
 
         rhs: ReactionSide {
-            compounds: vec![
-                ReactionCompound {
-                    element: ion_from_molecule!(WATER.clone()),
-                    amount: 2,
-                },
-            ],
+            compounds: vec![ReactionCompound {
+                element: ion_from_molecule!(WATER.clone()),
+                amount: 2,
+            }],
         },
 
         is_equilibrium: true,
@@ -144,12 +143,10 @@ fn reaction_from_string() {
 
     assert_eq!(reaction, reaction_from_string);
 
-
     let reaction_from_string = ElemReaction::<Ion>::ion_from_string("2 H2 + O2 ⇌ 2 H2O").unwrap();
 
     assert_eq!(reaction, reaction_from_string);
 }
-
 
 #[test]
 fn atom_from_string() {
@@ -162,7 +159,6 @@ fn atom_from_string() {
     assert_eq!(IRON, atom_from_string!("Fe"));
 }
 
-
 #[test]
 fn molecule_from_string() {
     use data_molecules::*;
@@ -170,8 +166,11 @@ fn molecule_from_string() {
     assert_eq!(WATER.clone(), molecule_from_string!("H2O"));
     assert_eq!(CO2.clone(), molecule_from_string!("CO2"));
     assert_eq!(SUGAR.clone(), molecule_from_string!("C12H22O11"));
+    assert_eq!(
+        COPPER_SULFATE_HYDRATED.clone(),
+        molecule_from_string!("CuSO4.5H2O")
+    );
 }
-
 
 #[test]
 fn test_gcd() {
@@ -180,7 +179,6 @@ fn test_gcd() {
     assert_eq!(12, gcd(48, 36));
     assert_eq!(1, gcd(7, 13));
 }
-
 
 #[test]
 fn diatomic_molecules_have_no_charge() {
@@ -197,7 +195,6 @@ fn diatomic_molecules_have_no_charge() {
         AtomCharge::from(1)
     );
 }
-
 
 #[test]
 fn total_atoms() {
@@ -229,7 +226,6 @@ fn total_atoms() {
         *side.total_atoms(false).get(&AtomNumber::from(8)).unwrap()
     );
 }
-
 
 #[test]
 fn keep_explicit_charges() {
@@ -285,33 +281,26 @@ fn keep_explicit_charges() {
     );
 }
 
-
 #[test]
 fn container_add_and_remove_elements() {
     use data_atoms::*;
     use data_molecules::*;
 
-
     let mut container = Container {
-        contents: vec![
-            ContainerCompound {
-                element: WATER.clone(),
-                moles: Moles::from(6.0),
-            },
-        ],
+        contents: vec![ContainerCompound {
+            element: WATER.clone(),
+            moles: Moles::from(6.0),
+        }],
 
         available_energy: Energy::from(1e5), // Should be enough
     };
 
-
     let reaction = ElemReaction {
         lhs: ReactionSide {
-            compounds: vec![
-                ReactionCompound {
-                    element: WATER.clone(),
-                    amount: 2,
-                },
-            ],
+            compounds: vec![ReactionCompound {
+                element: WATER.clone(),
+                amount: 2,
+            }],
         },
 
         rhs: ReactionSide {
@@ -367,23 +356,23 @@ fn container_add_and_remove_elements() {
     assert_eq!(0, container.contents.len());
 }
 
-
 #[test]
 fn check_display() {
+    use container::*;
     use data_atoms::*;
-    use data_molecules::*;
     use data_ions::*;
+    use data_molecules::*;
     use electron::*;
     use reaction::*;
-    use container::*;
-
 
     let reactioncompound = ReactionCompound {
         amount: 1,
         element: SUGAR.clone(),
     };
 
-    let reactionside = ReactionSide { compounds: vec![reactioncompound.clone()] };
+    let reactionside = ReactionSide {
+        compounds: vec![reactioncompound.clone()],
+    };
 
     let reaction = ElemReaction {
         lhs: reactionside.clone(),
@@ -400,7 +389,6 @@ fn check_display() {
         available_energy: Energy::from(0.0),
     };
 
-
     format!("{}", HYDROGEN); // Atom
     format!("{}", SUGAR.clone()); // Molecule
     format!("{}", AMMONIUM.clone()); // Ion
@@ -412,12 +400,10 @@ fn check_display() {
     format!("{}", container); // Container
 }
 
-
 #[test]
 fn container_reaction_cost() {
     use data_atoms::*;
     use data_molecules::*;
-
 
     let hydrogen = molecule_from_atom!(HYDROGEN);
     let oxygen = molecule_from_atom!(OXYGEN);
@@ -437,7 +423,6 @@ fn container_reaction_cost() {
         available_energy: Energy::from(10000.0),
     };
 
-
     let reaction = ElemReaction {
         lhs: ReactionSide {
             compounds: vec![
@@ -453,24 +438,20 @@ fn container_reaction_cost() {
         },
 
         rhs: ReactionSide {
-            compounds: vec![
-                ReactionCompound {
-                    element: WATER.clone(),
-                    amount: 2,
-                },
-            ],
+            compounds: vec![ReactionCompound {
+                element: WATER.clone(),
+                amount: 2,
+            }],
         },
 
         is_equilibrium: false, // actually true, but false for this test
     };
 
-
     macro_rules! energy_range {
-        ($lower: expr, $value: expr, $upper: expr) => (
+        ($lower: expr, $value: expr, $upper: expr) => {
             Energy::from($lower) < $value && $value < Energy::from($upper)
-        )
+        };
     }
-
 
     assert_eq!(Energy::from(10000.0), container.available_energy);
     assert!(energy_range!(-600.0, reaction.energy_cost(), -500.0));
@@ -491,53 +472,43 @@ fn container_reaction_cost() {
 fn ion_notation_check() {
     use data_atoms::*;
 
-
     // P₄²⁻  tetraphosphorus(-II)
     #[allow(non_snake_case)]
     let P4 = Ion {
         molecule: Molecule {
-            compounds: vec![
-                MoleculeCompound {
-                    atom: PHOSPHORUS,
-                    amount: 4,
-                },
-            ],
+            compounds: vec![MoleculeCompound {
+                atom: PHOSPHORUS,
+                amount: 4,
+            }],
         },
 
         charge: Some(AtomCharge::from(-2)),
     };
 
-
     assert_eq!("P₄²⁻", P4.symbol());
     assert_eq!("tetraphosphorus(-II)", P4.name());
 }
 
-
 #[test]
 fn ion_charge_calculation() {
     use data_ions::*;
-
 
     assert_eq!(AtomCharge::from(-2), SULPHATE.get_charge().unwrap());
     assert_eq!(AtomCharge::from(-1), HYDROXIDE.get_charge().unwrap());
     assert_eq!(AtomCharge::from(1), AMMONIUM.get_charge().unwrap());
 }
 
-
 #[test]
 fn electron_data() {
     use electron::*;
-
 
     assert_eq!(AtomCharge::from(-1), ELECTRON.get_charge().unwrap());
     assert_eq!("e⁻", ELECTRON.symbol());
 }
 
-
 #[test]
 fn diatomic_check() {
     use data_atoms::*;
-
 
     assert_eq!(2, MoleculeCompound::from_atom(HYDROGEN).amount);
     assert_eq!(2, MoleculeCompound::from_atom(NITROGEN).amount);
@@ -552,11 +523,9 @@ fn diatomic_check() {
     assert_eq!(1, MoleculeCompound::from_atom(SULFUR).amount);
 }
 
-
 #[test]
 fn atoms_database_check() {
     use data_atoms::*;
-
 
     assert_eq!(AtomNumber::from(1), HYDROGEN.number);
     assert_eq!("oxygen", OXYGEN.name);
@@ -572,11 +541,9 @@ fn atoms_database_check() {
     assert_eq!("aluminium", ALUMINIUM.name);
 }
 
-
 #[test]
 fn greek_namings() {
     use namings::number_to_greek as to_greek;
-
 
     assert_eq!("di", to_greek(2));
     assert_eq!("undeca", to_greek(11));
@@ -592,11 +559,9 @@ fn greek_namings() {
     assert_eq!("nonanonaconta", to_greek(99));
 }
 
-
 #[test]
 fn roman_namings() {
     use namings::number_to_roman as to_roman;
-
 
     assert_eq!("0", to_roman(0));
     assert_eq!("IV", to_roman(4));
@@ -608,12 +573,10 @@ fn roman_namings() {
     assert_eq!("-XVI", to_roman(-16));
 }
 
-
 #[test]
 fn reaction_check() {
     use data_atoms::*;
     use data_molecules::*;
-
 
     let good_reaction = ElemReaction {
         lhs: ReactionSide {
@@ -630,17 +593,14 @@ fn reaction_check() {
         },
 
         rhs: ReactionSide {
-            compounds: vec![
-                ReactionCompound {
-                    amount: 1,
-                    element: CO2.clone(),
-                },
-            ],
+            compounds: vec![ReactionCompound {
+                amount: 1,
+                element: CO2.clone(),
+            }],
         },
 
         is_equilibrium: false,
     };
-
 
     let wrong_reaction_0 = ElemReaction {
         lhs: ReactionSide {
@@ -657,76 +617,60 @@ fn reaction_check() {
         },
 
         rhs: ReactionSide {
-            compounds: vec![
-                ReactionCompound {
-                    amount: 3,
-                    element: CO2.clone(),
-                },
-            ],
+            compounds: vec![ReactionCompound {
+                amount: 3,
+                element: CO2.clone(),
+            }],
         },
 
         is_equilibrium: false,
     };
-
 
     let wrong_reaction_1 = ElemReaction {
         lhs: ReactionSide {
-            compounds: vec![
-                ReactionCompound {
-                    amount: 1,
-                    element: molecule_from_atom!(LITHIUM),
-                },
-            ],
+            compounds: vec![ReactionCompound {
+                amount: 1,
+                element: molecule_from_atom!(LITHIUM),
+            }],
         },
 
         rhs: ReactionSide {
-            compounds: vec![
-                ReactionCompound {
-                    amount: 3,
-                    element: molecule_from_atom!(HYDROGEN),
-                },
-            ],
+            compounds: vec![ReactionCompound {
+                amount: 3,
+                element: molecule_from_atom!(HYDROGEN),
+            }],
         },
 
         is_equilibrium: false,
     };
 
-
     let equilibrium_reaction = ElemReaction {
         lhs: ReactionSide {
-            compounds: vec![
-                ReactionCompound {
-                    amount: 1,
-                    element: molecule_from_atom!(HYDROGEN),
-                },
-            ],
+            compounds: vec![ReactionCompound {
+                amount: 1,
+                element: molecule_from_atom!(HYDROGEN),
+            }],
         },
 
         rhs: ReactionSide {
-            compounds: vec![
-                ReactionCompound {
-                    amount: 2,
-                    element: Molecule {
-                        compounds: vec![
-                            MoleculeCompound {
-                                atom: HYDROGEN,
-                                amount: 1,
-                            },
-                        ],
-                    },
+            compounds: vec![ReactionCompound {
+                amount: 2,
+                element: Molecule {
+                    compounds: vec![MoleculeCompound {
+                        atom: HYDROGEN,
+                        amount: 1,
+                    }],
                 },
-            ],
+            }],
         },
 
         is_equilibrium: true,
     };
 
-
     // Test validity
     assert!(good_reaction.is_valid());
     assert!(!wrong_reaction_0.is_valid());
     assert!(!wrong_reaction_1.is_valid());
-
 
     // Test display
     assert_eq!(
@@ -739,12 +683,10 @@ fn reaction_check() {
     );
 }
 
-
 #[test]
 fn equalise() {
     use data_atoms::*;
     use data_molecules::*;
-
 
     let water_reaction = ElemReaction {
         lhs: ReactionSide {
@@ -761,79 +703,63 @@ fn equalise() {
         },
 
         rhs: ReactionSide {
-            compounds: vec![
-                ReactionCompound {
-                    element: WATER.clone(),
-                    amount: 0,
-                },
-            ],
+            compounds: vec![ReactionCompound {
+                element: WATER.clone(),
+                amount: 0,
+            }],
         },
 
         is_equilibrium: false,
     };
 
-
     assert!(water_reaction.equalise());
 }
 
-
 #[test]
 fn only_compare_similiar_elements() {
-    use data_molecules::*;
     use data_ions::*;
-
+    use data_molecules::*;
 
     let _ = ElemReaction {
         lhs: ReactionSide {
-            compounds: vec![
-                ReactionCompound {
-                    element: WATER.clone(),
-                    amount: 1,
-                },
-            ],
+            compounds: vec![ReactionCompound {
+                element: WATER.clone(),
+                amount: 1,
+            }],
         },
 
         rhs: ReactionSide {
-            compounds: vec![
-                ReactionCompound {
-                    element: CO2.clone(),
-                    amount: 1,
-                },
-            ],
+            compounds: vec![ReactionCompound {
+                element: CO2.clone(),
+                amount: 1,
+            }],
         },
 
         is_equilibrium: true,
     };
 
-
     let _ = ElemReaction {
         lhs: ReactionSide {
-            compounds: vec![
-                ReactionCompound {
-                    element: AMMONIUM.clone(),
-                    amount: 1,
-                },
-            ],
+            compounds: vec![ReactionCompound {
+                element: AMMONIUM.clone(),
+                amount: 1,
+            }],
         },
 
         rhs: ReactionSide {
-            compounds: vec![
-                ReactionCompound {
-                    element: SULPHATE.clone(),
-                    amount: 1,
-                },
-            ],
+            compounds: vec![ReactionCompound {
+                element: SULPHATE.clone(),
+                amount: 1,
+            }],
         },
 
         is_equilibrium: true,
     };
 }
-
 
 #[test]
 fn molecule_mass_calculation() {
     use data_molecules::*;
-
 
     assert_eq!(AtomMass::from(18.015), WATER.mass());
     assert_eq!(AtomMass::from(342.297), SUGAR.mass());

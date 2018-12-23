@@ -8,28 +8,25 @@ use trait_properties::Properties;
 
 use std::fmt::*;
 
-
 macro_rules! fmt {
-    ($x:tt) => (
+    ($x:tt) => {
         impl Display for $x {
             fn fmt(&self, formatter: &mut Formatter) -> Result {
                 write!(formatter, "{}", self.stringify())
             }
         }
-    )
+    };
 }
 
-
 macro_rules! fmt_type {
-    ($x:tt) => (
+    ($x:tt) => {
         impl<E: Element> Display for $x<E> {
             fn fmt(&self, formatter: &mut Formatter) -> Result {
                 write!(formatter, "{}", self.stringify())
             }
         }
-    )
+    };
 }
-
 
 fmt!(Atom);
 fmt!(Ion);

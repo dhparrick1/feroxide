@@ -2,20 +2,17 @@
 extern crate serde_derive;
 extern crate toml;
 
-
 mod types;
 use types::{AtomGroup_type, AtomMass_type, AtomNumber_type};
 
-use std::fs::File;
 use std::collections::HashMap;
+use std::fs::File;
 use std::io::*;
-
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 struct Config {
     pub atoms: HashMap<String, Atom>,
 }
-
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 struct Atom {
@@ -26,7 +23,6 @@ struct Atom {
     pub mass: AtomMass_type,
     pub diatomic: bool,
 }
-
 
 #[allow(dead_code)]
 /// Write an example TOML file to the data_atoms.rs file
@@ -55,7 +51,6 @@ fn write(mut atoms_rs_file: &File) {
     // Write TOML to file
     atoms_rs_file.write_all(config_string.as_bytes()).ok();
 }
-
 
 #[allow(dead_code)]
 /// Reads the data_atoms.toml file, converts it to the appropriate format
@@ -108,7 +103,6 @@ pub const {capsname}: Atom = Atom {{
         atoms_rs_file.write_all(rust_atom.as_bytes()).ok();
     }
 
-
     atoms_rs_file
         .write_all(b"\npub const ALL_ATOMS: &[Atom] = &[")
         .ok();
@@ -122,7 +116,6 @@ pub const {capsname}: Atom = Atom {{
 
     atoms_rs_file.write_all(b"];").ok();
 }
-
 
 fn main() {
     let mut atoms_toml_file = File::open("src/data_atoms.toml").unwrap();

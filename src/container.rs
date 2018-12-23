@@ -1,16 +1,15 @@
 use data_sep::*;
-use molecule::Molecule;
-use reaction::{ElemReaction, ReactionCompound};
 use ion::Ion;
+use molecule::Molecule;
+use reaction::ReactionSide;
+use reaction::{ElemReaction, ReactionCompound};
+use redox::RedoxReaction;
 use trait_element::Element;
 use trait_properties::Properties;
 use trait_reaction::Reaction;
 use types::*;
-use reaction::ReactionSide;
-use redox::RedoxReaction;
 
 use std::hash::{Hash, Hasher};
-
 
 #[derive(Debug, Clone)]
 /// A container for elements
@@ -22,7 +21,6 @@ pub struct Container<E: Element> {
     pub available_energy: Energy,
 }
 
-
 #[derive(Debug, Clone)]
 /// A compound for containers
 pub struct ContainerCompound<E: Element> {
@@ -33,7 +31,6 @@ pub struct ContainerCompound<E: Element> {
     pub moles: Moles,
 }
 
-
 /// Convert a given `ReactionCompound` into a `ContainerCompound`
 pub fn rc_to_cc<E: Element>(rc: ReactionCompound<E>) -> ContainerCompound<E> {
     ContainerCompound {
@@ -41,8 +38,6 @@ pub fn rc_to_cc<E: Element>(rc: ReactionCompound<E>) -> ContainerCompound<E> {
         moles: Moles::from(Moles_type::from(rc.amount)),
     }
 }
-
-
 
 pub fn get_redox_reaction(container: &Container<Ion>) -> Option<RedoxReaction> {
     let mut oxidator: Option<(ElemReaction<Ion>, SEP)> = None;
@@ -57,9 +52,11 @@ pub fn get_redox_reaction(container: &Container<Ion>) -> Option<RedoxReaction> {
         print!("{}           \twith SEP {}  ", reaction.0, reaction.1);
 
         // Find electrons
-        if reaction.0.lhs.total_atoms(true).contains_key(
-            &AtomNumber::from(0),
-        )
+        if reaction
+            .0
+            .lhs
+            .total_atoms(true)
+            .contains_key(&AtomNumber::from(0))
         {
             println!("[oxi]");
 
@@ -70,7 +67,6 @@ pub fn get_redox_reaction(container: &Container<Ion>) -> Option<RedoxReaction> {
             } else {
                 oxidator = Some(reaction);
             }
-
         } else {
             println!("[red]");
 
@@ -96,7 +92,6 @@ pub fn get_redox_reaction(container: &Container<Ion>) -> Option<RedoxReaction> {
         println!("failed to find reductor");
     }
 
-
     if oxidator.is_some() && reductor.is_some() {
         let oxi = oxidator.unwrap();
         let red = reductor.unwrap();
@@ -109,8 +104,6 @@ pub fn get_redox_reaction(container: &Container<Ion>) -> Option<RedoxReaction> {
         None
     }
 }
-
-
 
 impl<E: Element> Container<E> {
     /// Applies given `Reaction` to `Container`
@@ -163,7 +156,6 @@ impl<E: Element> Container<E> {
         true
     }
 
-
     /// Check if the container contains a container compound
     pub fn contains(&self, element: &ContainerCompound<E>) -> bool {
         // Find element in self.contents
@@ -182,7 +174,6 @@ impl<E: Element> Container<E> {
         false
     }
 
-
     /// Check if the container has all given elements
     pub fn has_elements(&self, elements: &[ContainerCompound<E>]) -> bool {
         for element in elements {
@@ -194,23 +185,24 @@ impl<E: Element> Container<E> {
         true
     }
 
-
     /// Check if the container has all required elements for a reaction to occur
     /// NOTE: Ignores electrons
     pub fn has_enough_compounds_for_reaction(&self, reaction: &ElemReaction<E>) -> bool {
-        self.has_elements(&reaction
-            .lhs
-            .compounds
-            .iter()
-            .filter(|x| {
-                x.element.clone().get_molecule().unwrap().compounds[0]
-                    .atom
-                    .number != AtomNumber::from(0)
-            })
-            .map(|x| rc_to_cc(x.clone()))
-            .collect::<Vec<ContainerCompound<E>>>())
+        self.has_elements(
+            &reaction
+                .lhs
+                .compounds
+                .iter()
+                .filter(|x| {
+                    x.element.clone().get_molecule().unwrap().compounds[0]
+                        .atom
+                        .number
+                        != AtomNumber::from(0)
+                })
+                .map(|x| rc_to_cc(x.clone()))
+                .collect::<Vec<ContainerCompound<E>>>(),
+        )
     }
-
 
     /// Remove given elements from container
     pub fn remove_elements(&mut self, elements: &[ContainerCompound<E>]) {
@@ -244,7 +236,6 @@ impl<E: Element> Container<E> {
         }
     }
 
-
     /// Add given elements to container
     pub fn add_elements(&mut self, elements: &[ContainerCompound<E>]) {
         for element in elements {
@@ -261,7 +252,6 @@ impl<E: Element> Container<E> {
         }
     }
 
-
     /// Get all possible redox reactions and their SEP's
     pub fn get_redox_reactions(&self) -> Vec<(ElemReaction<Ion>, SEP)> {
         let mut redox_reactions = vec![];
@@ -274,7 +264,6 @@ impl<E: Element> Container<E> {
 
         redox_reactions
     }
-
 
     /// Convert container to a nice string for displaying
     pub fn stringify(&self) -> String {
@@ -299,7 +288,6 @@ impl<E: Element> Container<E> {
         string
     }
 
-
     pub fn ion_from_string(string: &str) -> Option<Container<Ion>> {
         let mut token = String::new();
         let mut contents = None;
@@ -313,7 +301,6 @@ impl<E: Element> Container<E> {
                 for rc in rs.compounds {
                     _contents.push(rc_to_cc(rc));
                 }
-
 
                 contents = Some(_contents);
 
@@ -344,7 +331,6 @@ impl<E: Element> Container<E> {
             None
         }
     }
-
 
     pub fn molecule_from_string(string: &str) -> Option<Container<Molecule>> {
         let mut token = String::new();
@@ -391,14 +377,12 @@ impl<E: Element> Container<E> {
     }
 }
 
-
 impl<E: Element> ContainerCompound<E> {
     pub fn ion_from_string(string: &str) -> Option<ContainerCompound<Ion>> {
         let rc = ReactionCompound::<Ion>::ion_from_string(string)?;
 
         Some(rc_to_cc(rc))
     }
-
 
     pub fn molecule_from_string(string: &str) -> Option<ContainerCompound<Molecule>> {
         let rc = ReactionCompound::<Molecule>::molecule_from_string(string)?;
@@ -407,10 +391,7 @@ impl<E: Element> ContainerCompound<E> {
     }
 }
 
-
-
 impl<E: Element> Eq for ContainerCompound<E> {}
-
 
 impl<E: Element> PartialEq for ContainerCompound<E> {
     /// Two container compounds are equal when their elements are equal
@@ -419,30 +400,25 @@ impl<E: Element> PartialEq for ContainerCompound<E> {
     }
 }
 
-
 impl<E: Element> Hash for ContainerCompound<E> {
     fn hash<H: Hasher>(&self, state: &mut H) {
         self.element.hash(state)
     }
 }
 
-
 impl<E: Element> Element for ContainerCompound<E> {
     fn get_charge(&self) -> Option<AtomCharge> {
         self.element.get_charge()
     }
 
-
     fn get_molecule(self) -> Option<Molecule> {
         self.element.get_molecule()
     }
-
 
     fn get_ion(self) -> Option<Ion> {
         self.element.get_ion()
     }
 }
-
 
 impl<E: Element> Properties for ContainerCompound<E> {
     fn symbol(&self) -> String {
@@ -458,7 +434,6 @@ impl<E: Element> Properties for ContainerCompound<E> {
         symbol
     }
 
-
     fn name(&self) -> String {
         let mut name = String::new();
 
@@ -472,11 +447,9 @@ impl<E: Element> Properties for ContainerCompound<E> {
         name
     }
 
-
     fn mass(&self) -> AtomMass {
         self.element.mass() * (self.moles.0 as AtomMass_type)
     }
-
 
     fn is_diatomic(&self) -> bool {
         self.element.is_diatomic()

@@ -11,7 +11,6 @@ use std::hash::*;
 use std::mem;
 use std::ops::*;
 
-
 #[derive(Debug, Eq, PartialEq, Clone, Hash)]
 /// An elementair reaction (not containing ions)
 pub struct ElemReaction<E: Element> {
@@ -25,14 +24,12 @@ pub struct ElemReaction<E: Element> {
     pub is_equilibrium: bool,
 }
 
-
 #[derive(Debug, Eq, PartialEq, Clone, Hash)]
 /// A side of a reaction
 pub struct ReactionSide<E: Element> {
     /// The compounds of this side
     pub compounds: Vec<ReactionCompound<E>>,
 }
-
 
 #[derive(Debug, Eq, Clone)]
 /// A reaction compound
@@ -43,8 +40,6 @@ pub struct ReactionCompound<E: Element> {
     /// The amount of moles needed
     pub amount: u16,
 }
-
-
 
 impl<E: Element> ElemReaction<E> {
     /// Convert a string representation of an elementary reaction into one
@@ -77,7 +72,6 @@ impl<E: Element> ElemReaction<E> {
             rhs = ReactionSide::<Ion>::ion_from_string(&token);
         }
 
-
         if let (Some(lhs), Some(rhs)) = (lhs, rhs) {
             Some(ElemReaction {
                 lhs,
@@ -88,7 +82,6 @@ impl<E: Element> ElemReaction<E> {
             None
         }
     }
-
 
     /// Convert a string representation of a reaction into one
     pub fn molecule_from_string(string: &str) -> Option<ElemReaction<Molecule>> {
@@ -119,7 +112,6 @@ impl<E: Element> ElemReaction<E> {
             rhs = ReactionSide::<Molecule>::molecule_from_string(&token);
         }
 
-
         if let (Some(lhs), Some(rhs)) = (lhs, rhs) {
             Some(ElemReaction {
                 lhs,
@@ -130,7 +122,6 @@ impl<E: Element> ElemReaction<E> {
             None
         }
     }
-
 
     /// Get the sign of the equation ( → or ⇌ ), depending whether it is an equilibrium or not
     #[cfg(not(feature = "no_utf"))]
@@ -144,9 +135,12 @@ impl<E: Element> ElemReaction<E> {
 
     #[cfg(feature = "no_utf")]
     pub fn reaction_sign(&self) -> &str {
-        if self.is_equilibrium { " <> " } else { " -> " }
+        if self.is_equilibrium {
+            " <> "
+        } else {
+            " -> "
+        }
     }
-
 
     /// Swap the equation
     pub fn swap(mut self) -> Self {
@@ -154,7 +148,6 @@ impl<E: Element> ElemReaction<E> {
         self
     }
 }
-
 
 impl<E: Element> ReactionSide<E> {
     /// Convert a string representation of a reactionside into one
@@ -192,14 +185,12 @@ impl<E: Element> ReactionSide<E> {
             }
         }
 
-
         if !compounds.is_empty() {
             Some(ReactionSide { compounds })
         } else {
             None
         }
     }
-
 
     /// Convert a string representation of a reactionside into one
     pub fn molecule_from_string(symbol: &str) -> Option<ReactionSide<Molecule>> {
@@ -228,14 +219,12 @@ impl<E: Element> ReactionSide<E> {
             }
         }
 
-
         if !compounds.is_empty() {
             Some(ReactionSide { compounds })
         } else {
             None
         }
     }
-
 
     /// Calculate the total charge of this reaction side
     pub fn total_charge(&self) -> AtomCharge {
@@ -250,7 +239,6 @@ impl<E: Element> ReactionSide<E> {
         total_charge
     }
 
-
     /// Calculate the energy this side has
     pub fn energy(&self) -> Energy {
         let mut energy = 0.0;
@@ -259,8 +247,8 @@ impl<E: Element> ReactionSide<E> {
             let sef = get_sef(&compound.element.clone().get_ion().unwrap());
 
             if sef.is_some() {
-                energy += Energy_type::from(SEF_type::from(sef.unwrap())) *
-                    Energy_type::from(compound.amount);
+                energy += Energy_type::from(SEF_type::from(sef.unwrap()))
+                    * Energy_type::from(compound.amount);
             } else {
                 let mol = compound.element.clone().get_molecule().unwrap();
                 let is_diatomic = mol.is_diatomic();
@@ -275,10 +263,8 @@ impl<E: Element> ReactionSide<E> {
             }
         }
 
-
         Energy::from(energy)
     }
-
 
     /// Calculate the total amount of atoms this side contains
     pub fn total_atoms(&self, include_electrons: bool) -> HashMap<AtomNumber, u16> {
@@ -312,7 +298,6 @@ impl<E: Element> ReactionSide<E> {
         atoms
     }
 }
-
 
 impl<E: Element> ReactionCompound<E> {
     /// Convert a string representation of a reaction compound into one
@@ -350,7 +335,6 @@ impl<E: Element> ReactionCompound<E> {
         }
     }
 
-
     /// Convert a string representation of a reaction compound into one
     pub fn molecule_from_string(symbol: &str) -> Option<ReactionCompound<Molecule>> {
         let mut amount: u16 = 0;
@@ -387,16 +371,13 @@ impl<E: Element> ReactionCompound<E> {
     }
 }
 
-
 impl<E: Element> Reaction<E> for ElemReaction<E> {
     /// NOTE: This function is still a WIP!
     fn equalise(&self) -> bool {
         println!("####    The equalise function is not yet ready.");
 
-
         let total_left = self.lhs.total_atoms(false);
         let total_right = self.rhs.total_atoms(false);
-
 
         // If both sides are already equal, do nothing
         if total_left == total_right {
@@ -439,23 +420,19 @@ impl<E: Element> Reaction<E> for ElemReaction<E> {
         true
     }
 
-
     fn is_valid(&self) -> bool {
-        self.lhs.total_atoms(false) == self.rhs.total_atoms(false) &&
-            self.lhs.total_charge() == self.lhs.total_charge()
+        self.lhs.total_atoms(false) == self.rhs.total_atoms(false)
+            && self.lhs.total_charge() == self.lhs.total_charge()
     }
-
 
     fn energy_cost(&self) -> Energy {
         self.rhs.energy() - self.lhs.energy()
     }
 
-
     fn elem_reaction(&self) -> ElemReaction<E> {
         self.clone()
     }
 }
-
 
 impl<E: Element> Add for ReactionSide<E> {
     type Output = ReactionSide<E>;
@@ -468,7 +445,6 @@ impl<E: Element> Add for ReactionSide<E> {
         ReactionSide { compounds }
     }
 }
-
 
 impl<E: Element> Mul<u16> for ReactionSide<E> {
     type Output = ReactionSide<E>;
@@ -486,7 +462,6 @@ impl<E: Element> Mul<u16> for ReactionSide<E> {
     }
 }
 
-
 impl<E: Element> PartialEq for ReactionCompound<E> {
     /// Two ReactionCompound's are equal if their elements are equal
     fn eq(&self, rhs: &ReactionCompound<E>) -> bool {
@@ -494,13 +469,11 @@ impl<E: Element> PartialEq for ReactionCompound<E> {
     }
 }
 
-
 impl<E: Element> Hash for ReactionCompound<E> {
     fn hash<H: Hasher>(&self, state: &mut H) {
         self.element.hash(state);
     }
 }
-
 
 impl<E: Element> Properties for ElemReaction<E> {
     fn symbol(&self) -> String {
@@ -516,7 +489,6 @@ impl<E: Element> Properties for ElemReaction<E> {
         symbol
     }
 
-
     fn name(&self) -> String {
         let mut name = String::new();
 
@@ -530,19 +502,16 @@ impl<E: Element> Properties for ElemReaction<E> {
         name
     }
 
-
     fn mass(&self) -> AtomMass {
         // Law of Conservation of Mass
         AtomMass::from(0.0)
     }
-
 
     fn is_diatomic(&self) -> bool {
         // Reactions can't be diatomic
         false
     }
 }
-
 
 impl<E: Element> Properties for ReactionSide<E> {
     fn symbol(&self) -> String {
@@ -561,7 +530,6 @@ impl<E: Element> Properties for ReactionSide<E> {
         symbol
     }
 
-
     fn name(&self) -> String {
         let mut name = String::new();
 
@@ -578,7 +546,6 @@ impl<E: Element> Properties for ReactionSide<E> {
         name
     }
 
-
     fn mass(&self) -> AtomMass {
         let mut mass = AtomMass::from(0.0);
 
@@ -589,13 +556,11 @@ impl<E: Element> Properties for ReactionSide<E> {
         mass
     }
 
-
     fn is_diatomic(&self) -> bool {
         // Reactions can't be diatomic
         false
     }
 }
-
 
 impl<E: Element> Properties for ReactionCompound<E> {
     fn symbol(&self) -> String {
@@ -610,7 +575,6 @@ impl<E: Element> Properties for ReactionCompound<E> {
         symbol
     }
 
-
     fn name(&self) -> String {
         let mut name = String::new();
 
@@ -624,28 +588,23 @@ impl<E: Element> Properties for ReactionCompound<E> {
         name
     }
 
-
     fn mass(&self) -> AtomMass {
         self.element.mass() * (AtomMass_type::from(self.amount))
     }
-
 
     fn is_diatomic(&self) -> bool {
         self.element.is_diatomic()
     }
 }
 
-
 impl<E: Element> Element for ReactionCompound<E> {
     fn get_charge(&self) -> Option<AtomCharge> {
         self.element.get_charge()
     }
 
-
     fn get_molecule(self) -> Option<Molecule> {
         self.element.get_molecule()
     }
-
 
     fn get_ion(self) -> Option<Ion> {
         self.element.get_ion()

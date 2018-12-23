@@ -1,1 +1,1 @@
-initSidebarItems({"struct":[["AMMONIA",""],["CO2",""],["SUGAR",""],["WATER",""]]});
+initSidebarItems({"struct":[["AMMONIA",""],["CO2",""],["COPPER_SULFATE_HYDRATED",""],["SUGAR",""],["WATER",""]]});

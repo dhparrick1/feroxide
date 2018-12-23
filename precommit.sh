@@ -20,8 +20,8 @@ $CARGO fmt
 total_exit_code=$((total_exit_code + $?))
 
 echo "Running clippy"
-./clippy.sh install
-./clippy.sh test
+rustup component add clippy-preview
+$CARGO clippy -- -D warnings
 total_exit_code=$((total_exit_code + $?))
 
 echo "Running tests"
